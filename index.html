@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apex Sports Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+```
+:root {
+  --red: #E8222A;
+  --dark: #0A0A0A;
+  --mid: #141414;
+  --card: #1A1A1A;
+  --border: #2A2A2A;
+  --text: #F0F0F0;
+  --muted: #888;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 5%;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem; letter-spacing: 2px;
+  color: var(--text);
+}
+.logo span { color: var(--red); }
+nav ul { list-style: none; display: flex; gap: 2.5rem; }
+nav ul a {
+  text-decoration: none; color: var(--muted);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: color .2s;
+}
+nav ul a:hover { color: var(--red); }
+.nav-btn {
+  background: var(--red); color: #fff; border: none;
+  padding: .6rem 1.6rem; font-family: 'Barlow Condensed', sans-serif;
+  font-size: .95rem; letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; transition: opacity .2s;
+}
+.nav-btn:hover { opacity: .85; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 0 5%;
+  position: relative; overflow: hidden;
+  background: var(--dark);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,34,42,0.12) 0%, transparent 70%),
+    repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.02) 80px, rgba(255,255,255,0.02) 81px),
+    repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,0.02) 80px, rgba(255,255,255,0.02) 81px);
+}
+.hero-number {
+  position: absolute; right: 3%;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(180px, 22vw, 320px);
+  color: rgba(255,255,255,0.03);
+  line-height: 1; user-select: none;
+  top: 50%; transform: translateY(-50%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+.hero-tag {
+  display: inline-block;
+  background: var(--red); color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .85rem; letter-spacing: 3px; text-transform: uppercase;
+  padding: .3rem 1rem; margin-bottom: 1.5rem;
+  animation: fadeUp .6s ease both;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 9vw, 130px);
+  line-height: .92; letter-spacing: 2px;
+  animation: fadeUp .7s .1s ease both;
+}
+.hero-title span { color: var(--red); }
+.hero-sub {
+  margin-top: 1.5rem;
+  font-size: 1.1rem; color: var(--muted); line-height: 1.7;
+  max-width: 480px;
+  animation: fadeUp .7s .2s ease both;
+}
+.hero-actions {
+  margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp .7s .3s ease both;
+}
+.btn-primary {
+  background: var(--red); color: #fff; border: none;
+  padding: .9rem 2.2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: opacity .2s; text-decoration: none;
+}
+.btn-primary:hover { opacity: .85; }
+.btn-outline {
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border);
+  padding: .9rem 2.2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: border-color .2s, color .2s; text-decoration: none;
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.hero-stats {
+  margin-top: 4rem; display: flex; gap: 3rem;
+  animation: fadeUp .7s .4s ease both;
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem; color: var(--red); line-height: 1;
+}
+.stat-label {
+  font-size: .8rem; color: var(--muted);
+  letter-spacing: 1.5px; text-transform: uppercase; margin-top: .2rem;
+}
+
+/* ── SECTIONS SHARED ── */
+section { padding: 6rem 5%; }
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .8rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); margin-bottom: .8rem;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(38px, 5vw, 64px); letter-spacing: 1px; line-height: 1;
+}
+.section-sub {
+  color: var(--muted); font-size: 1rem; line-height: 1.7;
+  max-width: 500px; margin-top: .8rem;
+}
+.section-head { margin-bottom: 3.5rem; }
+
+/* ── SPORTS ── */
+#sports { background: var(--mid); }
+.sports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.sport-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: border-color .25s, transform .25s;
+  position: relative; overflow: hidden;
+}
+.sport-card::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--red);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.sport-card:hover { border-color: var(--red); transform: translateY(-4px); }
+.sport-card:hover::after { transform: scaleX(1); }
+.sport-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+.sport-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: .4rem;
+}
+.sport-members { font-size: .85rem; color: var(--muted); }
+
+/* ── SCHEDULE ── */
+#schedule { background: var(--dark); }
+.schedule-grid { display: grid; gap: 1rem; }
+.schedule-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center; gap: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1.2rem 1.5rem;
+  transition: border-color .2s;
+}
+.schedule-item:hover { border-color: var(--red); }
+.schedule-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem; color: var(--red); letter-spacing: 1px;
+}
+.schedule-day { font-size: .75rem; color: var(--muted); text-transform: uppercase; }
+.schedule-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem; font-weight: 700; letter-spacing: .5px;
+}
+.schedule-loc { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
+.badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .75rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: .3rem .8rem; border: 1px solid;
+}
+.badge-open { border-color: #22c55e; color: #22c55e; }
+.badge-full { border-color: var(--muted); color: var(--muted); }
+
+/* ── MEMBERSHIP ── */
+#membership { background: var(--mid); }
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.plan-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: border-color .25s;
+}
+.plan-card.featured {
+  border-color: var(--red);
+}
+.plan-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--red); color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .7rem; letter-spacing: 2px;
+  padding: .25rem 1rem;
+}
+.plan-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .85rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1rem;
+}
+.plan-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem; line-height: 1; color: var(--text);
+}
+.plan-price sup { font-size: 1.5rem; vertical-align: super; }
+.plan-period { font-size: .85rem; color: var(--muted); margin-bottom: 2rem; }
+.plan-features { list-style: none; margin-bottom: 2rem; }
+.plan-features li {
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .95rem; color: var(--muted);
+  display: flex; align-items: center; gap: .6rem;
+}
+.plan-features li::before { content: '▸'; color: var(--red); font-size: .8rem; }
+.plan-features li.active { color: var(--text); }
+
+/* ── CONTACT ── */
+#contact { background: var(--dark); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+}
+.contact-info { display: flex; flex-direction: column; gap: 2rem; }
+.contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+.contact-icon {
+  width: 44px; height: 44px; background: var(--card);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.contact-detail-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .75rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--red); margin-bottom: .3rem;
+}
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: .4rem; }
+.form-group label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted);
+}
+.form-group input, .form-group textarea, .form-group select {
+  background: var(--card); border: 1px solid var(--border);
+  color: var(--text); padding: .8rem 1rem;
+  font-family: 'Barlow', sans-serif; font-size: .95rem;
+  outline: none; transition: border-color .2s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--red); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group select option { background: var(--card); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--mid);
+  border-top: 1px solid var(--border);
+  padding: 3rem 5% 2rem;
+}
+.footer-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 2rem; flex-wrap: wrap; gap: 2rem;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem; letter-spacing: 2px;
+}
+.footer-logo span { color: var(--red); }
+.footer-tagline { color: var(--muted); font-size: .9rem; margin-top: .3rem; }
+.footer-links { display: flex; gap: 4rem; flex-wrap: wrap; }
+.footer-col h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .8rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+.footer-col a {
+  text-decoration: none; color: var(--muted); font-size: .9rem;
+  transition: color .2s;
+}
+.footer-col a:hover { color: var(--text); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom p { font-size: .85rem; color: var(--muted); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { gap: 2rem; }
+  .footer-links { gap: 2rem; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <div class="logo">APEX<span>.</span>SC</div>
+  <ul>
+    <li><a href="#sports">Sports</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-btn">Join Now</button>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-number">01</div>
+  <div class="hero-content">
+    <div class="hero-tag">Est. 2020 — Medina, Saudi Arabia</div>
+    <h1 class="hero-title">PUSH YOUR<br><span>LIMITS</span></h1>
+    <p class="hero-sub">Apex Sports Club is your home for training, competition, and community. World-class facilities, expert coaching, all in one place.</p>
+    <div class="hero-actions">
+      <a href="#membership" class="btn-primary">Get Membership</a>
+      <a href="#sports" class="btn-outline">Explore Sports</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Active Members</div>
+      </div>
+      <div>
+        <div class="stat-num">12</div>
+        <div class="stat-label">Sports Available</div>
+      </div>
+      <div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Pro Coaches</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTS -->
+
+<section id="sports">
+  <div class="section-head reveal">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">OUR SPORTS</h2>
+    <p class="section-sub">From team sports to individual training — find your discipline and start competing.</p>
+  </div>
+  <div class="sports-grid">
+    <div class="sport-card reveal">
+      <div class="sport-icon">⚽</div>
+      <div class="sport-name">Football</div>
+      <div class="sport-members">120 members</div>
+    </div>
+    <div class="sport-card reveal">
+      <div class="sport-icon">🏀</div>
+      <div class="sport-name">Basketball</div>
+      <div class="sport-members">85 members</div>
+    </div>
+    <div class="sport-card reveal">
+      <div class="sport-icon">🏊</div>
+      <div class="sport-name">Swimming</div>
+      <div class="sport-members">60 members</div>
+    </div>
+    <div class="sport-card reveal">
+      <div class="sport-icon">🥊</div>
+      <div class="sport-name">Boxing</div>
+      <div class="sport-members">45 members</div>
+    </div>
+    <div class="sport-card reveal">
+      <div class="sport-icon">🏋️</div>
+      <div class="sport-name">Weightlifting</div>
+      <div class="sport-members">95 members</div>
+    </div>
+    <div class="sport-card reveal">
+      <div class="sport-icon">🎾</div>
+      <div class="sport-name">Tennis</div>
+      <div class="sport-members">40 members</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+
+<section id="schedule">
+  <div class="section-head reveal">
+    <div class="section-tag">Weekly Program</div>
+    <h2 class="section-title">TRAINING SCHEDULE</h2>
+    <p class="section-sub">Join a session that fits your week. All levels welcome.</p>
+  </div>
+  <div class="schedule-grid">
+    <div class="schedule-item reveal">
+      <div><div class="schedule-time">07:00</div><div class="schedule-day">Sunday</div></div>
+      <div><div class="schedule-name">Morning Football Training</div><div class="schedule-loc">📍 Main Field</div></div>
+      <span class="badge badge-open">Open</span>
+    </div>
+    <div class="schedule-item reveal">
+      <div><div class="schedule-time">09:30</div><div class="schedule-day">Monday</div></div>
+      <div><div class="schedule-name">Basketball — Advanced</div><div class="schedule-loc">📍 Indoor Court A</div></div>
+      <span class="badge badge-full">Full</span>
+    </div>
+    <div class="schedule-item reveal">
+      <div><div class="schedule-time">06:00</div><div class="schedule-day">Tuesday</div></div>
+      <div><div class="schedule-name">Swimming — All Levels</div><div class="schedule-loc">📍 Olympic Pool</div></div>
+      <span class="badge badge-open">Open</span>
+    </div>
+    <div class="schedule-item reveal">
+      <div><div class="schedule-time">17:00</div><div class="schedule-day">Wednesday</div></div>
+      <div><div class="schedule-name">Boxing Fundamentals</div><div class="schedule-loc">📍 Combat Gym</div></div>
+      <span class="badge badge-open">Open</span>
+    </div>
+    <div class="schedule-item reveal">
+      <div><div class="schedule-time">08:00</div><div class="schedule-day">Thursday</div></div>
+      <div><div class="schedule-name">Strength & Conditioning</div><div class="schedule-loc">📍 Weight Room</div></div>
+      <span class="badge badge-open">Open</span>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+
+<section id="membership">
+  <div class="section-head reveal">
+    <div class="section-tag">Join The Club</div>
+    <h2 class="section-title">MEMBERSHIP PLANS</h2>
+    <p class="section-sub">Choose the plan that fits your goals. Cancel anytime.</p>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card reveal">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>SAR </sup>99</div>
+      <div class="plan-period">per month</div>
+      <ul class="plan-features">
+        <li class="active">Access to 2 sports</li>
+        <li class="active">Group sessions only</li>
+        <li class="active">Locker room access</li>
+        <li>Personal coaching</li>
+        <li>Priority booking</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:block;text-align:center;">Get Started</a>
+    </div>
+    <div class="plan-card featured reveal">
+      <div class="plan-name">Pro</div>
+      <div class="plan-price"><sup>SAR </sup>199</div>
+      <div class="plan-period">per month</div>
+      <ul class="plan-features">
+        <li class="active">Access to all sports</li>
+        <li class="active">Group + private sessions</li>
+        <li class="active">Locker room access</li>
+        <li class="active">2 coaching sessions/month</li>
+        <li>Priority booking</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:block;text-align:center;">Get Started</a>
+    </div>
+    <div class="plan-card reveal">
+      <div class="plan-name">Elite</div>
+      <div class="plan-price"><sup>SAR </sup>349</div>
+      <div class="plan-period">per month</div>
+      <ul class="plan-features">
+        <li class="active">Access to all sports</li>
+        <li class="active">Unlimited sessions</li>
+        <li class="active">Locker room access</li>
+        <li class="active">Unlimited coaching</li>
+        <li class="active">Priority booking</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:block;text-align:center;">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="section-head reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">CONTACT US</h2>
+    <p class="section-sub">Ready to start? Send us a message and we'll get back to you within 24 hours.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-detail-label">Location</div>
+          <div>King Abdullah Road, Medina, Saudi Arabia</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-detail-label">Phone</div>
+          <div>+966 50 000 0000</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-detail-label">Email</div>
+          <div>info@apexsportsclub.sa</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-detail-label">Opening Hours</div>
+          <div>Sat–Thu: 6:00 AM – 10:00 PM<br>Friday: 2:00 PM – 10:00 PM</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Ahmed"/>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Almohammedi"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="ahmed@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>Interested In</label>
+        <select>
+          <option>Select a sport...</option>
+          <option>Football</option>
+          <option>Basketball</option>
+          <option>Swimming</option>
+          <option>Boxing</option>
+          <option>Weightlifting</option>
+          <option>Tennis</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your fitness goals..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;padding:1rem;">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">APEX<span>.</span>SC</div>
+      <div class="footer-tagline">Push Your Limits. Every Day.</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Club</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#sports">Sports</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Join</h4>
+        <ul>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Apex Sports Club. Academic Project by Aryam Mohammed Almohammedi.</p>
+    <p>Built with HTML · CSS · JavaScript</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
