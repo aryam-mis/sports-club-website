@@ -1,15 +1,14 @@
-<!DOCTYPE html>
+[03/12/47 04:57 ص] aryam: <!DOCTYPE html>
 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="color-scheme" content="dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apex Sports Club</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-```
 :root {
   --red: #E8222A;
   --dark: #0A0A0A;
@@ -20,10 +19,10 @@
   --muted: #888;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #0A0A0A; color-scheme: dark; }
 
 body {
-  background: var(--dark);
+  background: #0A0A0A;
   color: var(--text);
   font-family: 'Barlow', sans-serif;
   overflow-x: hidden;
@@ -66,7 +65,7 @@ nav ul a:hover { color: var(--red); }
   display: flex; align-items: center;
   padding: 0 5%;
   position: relative; overflow: hidden;
-  background: var(--dark);
+  background: #0A0A0A;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -123,7 +122,8 @@ nav ul a:hover { color: var(--red); }
   padding: .9rem 2.2rem;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.05rem; letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; transition: border-color .2s, color .2s; text-decoration: none;
+  cursor: pointer; transition: border-color .2s, color .
+[03/12/47 04:57 ص] aryam: 2s; text-decoration: none;
 }
 .btn-outline:hover { border-color: var(--red); color: var(--red); }
 .hero-stats {
@@ -157,14 +157,14 @@ section { padding: 6rem 5%; }
 .section-head { margin-bottom: 3.5rem; }
 
 /* ── SPORTS ── */
-#sports { background: var(--mid); }
+#sports { background: #141414; }
 .sports-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
 }
 .sport-card {
-  background: var(--card);
+  background: #1A1A1A;
   border: 1px solid var(--border);
   padding: 2rem 1.5rem;
   cursor: pointer;
@@ -189,13 +189,13 @@ section { padding: 6rem 5%; }
 .sport-members { font-size: .85rem; color: var(--muted); }
 
 /* ── SCHEDULE ── */
-#schedule { background: var(--dark); }
+#schedule { background: #0A0A0A; }
 .schedule-grid { display: grid; gap: 1rem; }
 .schedule-item {
   display: grid;
   grid-template-columns: 100px 1fr auto;
   align-items: center; gap: 1.5rem;
-  background: var(--card);
+  background: #1A1A1A;
   border: 1px solid var(--border);
   padding: 1.2rem 1.5rem;
   transition: border-color .2s;
@@ -220,14 +220,14 @@ section { padding: 6rem 5%; }
 .badge-full { border-color: var(--muted); color: var(--muted); }
 
 /* ── MEMBERSHIP ── */
-#membership { background: var(--mid); }
+#membership { background: #141414; }
 .plans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 .plan-card {
-  background: var(--card);
+  background: #1A1A1A;
   border: 1px solid var(--border);
   padding: 2.5rem 2rem;
   position: relative;
@@ -254,7 +254,8 @@ section { padding: 6rem 5%; }
   font-size: 3.5rem; line-height: 1; color: var(--text);
 }
 .plan-price sup { font-size: 1.5rem; vertical-align: super; }
-.plan-period { font-size: .85rem; color: var(--muted); margin-bottom: 2rem; }
+.plan-period { font-size: .
+[03/12/47 04:57 ص] aryam: 85rem; color: var(--muted); margin-bottom: 2rem; }
 .plan-features { list-style: none; margin-bottom: 2rem; }
 .plan-features li {
   padding: .6rem 0;
@@ -266,14 +267,14 @@ section { padding: 6rem 5%; }
 .plan-features li.active { color: var(--text); }
 
 /* ── CONTACT ── */
-#contact { background: var(--dark); }
+#contact { background: #0A0A0A; }
 .contact-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
 }
 .contact-info { display: flex; flex-direction: column; gap: 2rem; }
 .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
 .contact-icon {
-  width: 44px; height: 44px; background: var(--card);
+  width: 44px; height: 44px; background: #1A1A1A;
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.2rem; flex-shrink: 0;
@@ -292,7 +293,7 @@ section { padding: 6rem 5%; }
   color: var(--muted);
 }
 .form-group input, .form-group textarea, .form-group select {
-  background: var(--card); border: 1px solid var(--border);
+  background: #1A1A1A; border: 1px solid var(--border);
   color: var(--text); padding: .8rem 1rem;
   font-family: 'Barlow', sans-serif; font-size: .95rem;
   outline: none; transition: border-color .2s;
@@ -301,11 +302,11 @@ section { padding: 6rem 5%; }
 .form-group textarea:focus,
 .form-group select:focus { border-color: var(--red); }
 .form-group textarea { resize: vertical; min-height: 120px; }
-.form-group select option { background: var(--card); }
+.form-group select option { background: #1A1A1A; }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--mid);
+  background: #141414;
   border-top: 1px solid var(--border);
   padding: 3rem 5% 2rem;
 }
@@ -358,11 +359,10 @@ footer {
   .hero-stats { gap: 2rem; }
   .footer-links { gap: 2rem; }
 }
-```
 
   </style>
 </head>
-<body>
+<body style="background:#0A0A0A;color:#F0F0F0;">
 
 <!-- NAV -->
 
@@ -380,7 +380,7 @@ footer {
 <!-- HERO -->
 
 <section id="hero">
-  <div class="hero-bg"></div>
+[03/12/47 04:57 ص] aryam: <div class="hero-bg"></div>
   <div class="hero-number">01</div>
   <div class="hero-content">
     <div class="hero-tag">Est. 2020 — Medina, Saudi Arabia</div>
@@ -480,7 +480,7 @@ footer {
     </div>
     <div class="schedule-item reveal">
       <div><div class="schedule-time">08:00</div><div class="schedule-day">Thursday</div></div>
-      <div><div class="schedule-name">Strength & Conditioning</div><div class="schedule-loc">📍 Weight Room</div></div>
+[03/12/47 04:57 ص] aryam: <div><div class="schedule-name">Strength & Conditioning</div><div class="schedule-loc">📍 Weight Room</div></div>
       <span class="badge badge-open">Open</span>
     </div>
   </div>
@@ -592,7 +592,7 @@ footer {
         <input type="email" placeholder="ahmed@email.com"/>
       </div>
       <div class="form-group">
-        <label>Interested In</label>
+[03/12/47 04:57 ص] aryam: <label>Interested In</label>
         <select>
           <option>Select a sport...</option>
           <option>Football</option>
